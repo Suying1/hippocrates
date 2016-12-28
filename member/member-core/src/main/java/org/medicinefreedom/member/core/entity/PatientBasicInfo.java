@@ -22,14 +22,38 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.entity;
+package org.medicinefreedom.member.core.entity;
+
+import org.medicinefreedom.member.core.enums.Gender;
+
+import java.util.Date;
 
 /**
- * 通用说明：通用会员信息实体类.
+ * 通用说明：患者基本信息，对应数据库表<tt>t_patient</tt>.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/27 18:28
+ * @version 1.0.0  2016/12/28 9:12
  */
-public class BaseMember {
+public class PatientBasicInfo {
+    private String id;
+    private String name;
+    private Gender gender;
+    private Date birthday;
+    private int age;
+    private String mobilephone;
+    private String telephone;
+    private String email;
+    private String qq;
+    private String wechat;
+    private String certificateType;
+    private String certificateNo;
+    private String residencePlace;
+    private String domicilePlace;
+    private String nation;
+    private String maritalStatus;
+    private String educationalBackground;
+    private String career;
+    private String remark;
+
 
 }

@@ -39,6 +39,7 @@
 
     <properties>
         <member.service.version>1.0.0-SNAPSHOT</member.service.version>
+        <mybatis.version>3.4.1</mybatis.version>
     </properties>
 
     <dependencyManagement>
@@ -59,6 +60,13 @@
             </dependency>
 
             <!-- spring -->
+
+            <!-- myBatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
 
             <!-- junit -->
             <dependency>
