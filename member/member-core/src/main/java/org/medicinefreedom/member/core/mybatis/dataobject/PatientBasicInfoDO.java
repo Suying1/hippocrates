@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.entity;
+package org.medicinefreedom.member.core.mybatis.dataobject;
 
 import org.medicinefreedom.member.core.enums.Gender;
 
@@ -34,7 +34,7 @@ import java.util.Date;
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
  * @version 1.0.0  2016/12/28 9:12
  */
-public class PatientBasicInfo {
+public class PatientBasicInfoDO {
     private String id;
     private String name;
     private Gender gender;
@@ -54,6 +54,4 @@ public class PatientBasicInfo {
     private String educationalBackground;
     private String career;
     private String remark;
-
-
 }
