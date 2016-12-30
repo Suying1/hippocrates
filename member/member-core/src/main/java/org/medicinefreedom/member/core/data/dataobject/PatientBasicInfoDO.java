@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.mybatis.dataobject;
+package org.medicinefreedom.member.core.data.dataobject;
 
 import org.medicinefreedom.member.core.enums.Gender;
 
