@@ -34,4 +34,5 @@ import javax.inject.Named;
  */
 @Named("patientBasicInfoMapper")
 public interface PatientBasicInfoMapper {
+
 }
