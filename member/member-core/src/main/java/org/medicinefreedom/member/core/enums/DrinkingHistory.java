@@ -24,36 +24,29 @@
 
 package org.medicinefreedom.member.core.enums;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * 通用说明：性别枚举类.
+ * 通用说明：饮酒史枚举类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/28 9:33
+ * @version 1.0.0  2017/1/4 15:51
  */
-public enum Gender {
-    MALE("M", "男性"),
-    FEMALE("F", "女性"),;
+public enum DrinkingHistory {
+    NEVER("never", "没有饮酒史"),
+    EVER("ever", "有过饮酒史"),;
 
-    public final String code;
-    public final String description;
+    private final String status;
+    private final String description;
 
-    private static Map<String, Gender> codeLookup = new HashMap<>();
-
-    static {
-        for (Gender gender : Gender.values()) {
-            codeLookup.put(gender.code, gender);
-        }
-    }
-
-    Gender(String value, String description) {
-        this.code = value;
+    DrinkingHistory(String status, String description) {
+        this.status = status;
         this.description = description;
     }
 
-    public static Gender forCode(String code) {
-        return codeLookup.get(code);
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
