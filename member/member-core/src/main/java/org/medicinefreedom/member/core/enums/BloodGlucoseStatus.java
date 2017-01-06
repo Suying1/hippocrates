@@ -32,8 +32,8 @@ package org.medicinefreedom.member.core.enums;
  */
 public enum BloodGlucoseStatus {
     NORMAL("normal", "正常"),
-    HYPOGLYCEMIA("hypoglycemia", "低血糖"),
-    HYPERGLYCEMIA("hyperglycemia", "高血糖"),;
+    HYPERGLYCEMIA("hyperglycemia", "高血糖"),
+    HYPOGLYCEMIA("hypoglycemia", "低血糖"),;
 
     private final String status;
     private final String description;

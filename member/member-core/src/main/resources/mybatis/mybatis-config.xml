@@ -8,6 +8,7 @@
         <typeAlias type="org.medicinefreedom.member.core.data.typehandler.GenderTypeHandler" alias="GenderTypeHandler"/>
         <typeAlias type="org.medicinefreedom.member.core.data.typehandler.SetTypeHandler" alias="SetTypeHandler"/>
         <typeAlias type="org.medicinefreedom.member.core.data.typehandler.BooleanTypeHandler" alias="BooleanTypeHandler"/>
+        <typeAlias type="org.apache.ibatis.type.EnumOrdinalTypeHandler" alias="EnumOrdinalTypeHandler"/>
     </typeAliases>
     <mappers>
         <mapper resource="org/medicinefreedom/member/core/data/mapper/PatientBasicInfoMapper.xml"/>

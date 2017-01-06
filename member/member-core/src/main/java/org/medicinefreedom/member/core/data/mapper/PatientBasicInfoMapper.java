@@ -24,6 +24,8 @@
 
 package org.medicinefreedom.member.core.data.mapper;
 
+import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
+
 import javax.inject.Named;
 
 /**
@@ -34,5 +36,11 @@ import javax.inject.Named;
  */
 @Named("patientBasicInfoMapper")
 public interface PatientBasicInfoMapper {
+    int insert(PatientBasicInfoDO patientBasicInfoDO);
 
+    int update(PatientBasicInfoDO patientBasicInfoDO);
+
+    int delete(PatientBasicInfoDO patientBasicInfoDO);
+
+    PatientBasicInfoDO selectByPK(String id);
 }

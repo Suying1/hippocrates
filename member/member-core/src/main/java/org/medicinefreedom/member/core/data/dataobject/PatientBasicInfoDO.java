@@ -35,7 +35,8 @@ import java.util.Set;
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
  * @version 1.0.0  2016/12/28 9:12
  */
-public class PatientBasicInfoDO {
+public class PatientBasicInfoDO extends BaseDO {
+    private static final long serialVersionUID = 1538852436138626799L;
 
     // 唯一标识
     private String id;
@@ -88,7 +89,7 @@ public class PatientBasicInfoDO {
     private Set<String> otherAllergens;
 
     // 是否有心脏病
-    private boolean hasHeartDisease;
+    private Boolean hasHeartDisease;
 
     // 心脏病备注信息
     private String heartDiseaseRemark;
@@ -103,24 +104,264 @@ public class PatientBasicInfoDO {
     private BloodGlucoseStatus bloodGlucoseStatus;
 
     // 当前血糖值
-    private int currentBloodGlucoseLevel;
+    private int currentBloodGlucose;
 
     // 是否有其它疾病
-    private boolean hasOtherDisease;
+    private Boolean hasOtherDisease;
 
     // 其它疾病备注信息
     private String otherDiseaseRemark;
 
     // 是否有吸烟史
-    private SmokingHistory smokingHistory;
+    private Boolean hasSmokingHistory;
 
     // 是否有饮酒史
-    private DrinkingHistory drinkingHistory;
+    private Boolean hasDrinkingHistory;
 
     // 口腔麻醉反应
     private AnaesthesiaAdverseReactions anaesthesiaAdverseReactions;
 
     // 是否怀孕
-    private PregnancyStatus pregnancyStatus;
+    private Boolean isPregnant;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getGuardian() {
+        return guardian;
+    }
+
+    public void setGuardian(String guardian) {
+        this.guardian = guardian;
+    }
+
+    public String getMobilephone() {
+        return mobilephone;
+    }
+
+    public void setMobilephone(String mobilephone) {
+        this.mobilephone = mobilephone;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+
+    public String getResidencePlace() {
+        return residencePlace;
+    }
+
+    public void setResidencePlace(String residencePlace) {
+        this.residencePlace = residencePlace;
+    }
+
+    public Set<String> getAllergicDrugs() {
+        return allergicDrugs;
+    }
+
+    public void setAllergicDrugs(Set<String> allergicDrugs) {
+        this.allergicDrugs = allergicDrugs;
+    }
+
+    public Set<String> getAllergenicFoods() {
+        return allergenicFoods;
+    }
+
+    public void setAllergenicFoods(Set<String> allergenicFoods) {
+        this.allergenicFoods = allergenicFoods;
+    }
+
+    public Set<String> getOtherAllergens() {
+        return otherAllergens;
+    }
+
+    public void setOtherAllergens(Set<String> otherAllergens) {
+        this.otherAllergens = otherAllergens;
+    }
+
+    public Boolean getHasHeartDisease() {
+        return hasHeartDisease;
+    }
+
+    public void setHasHeartDisease(Boolean hasHeartDisease) {
+        this.hasHeartDisease = hasHeartDisease;
+    }
+
+    public String getHeartDiseaseRemark() {
+        return heartDiseaseRemark;
+    }
+
+    public void setHeartDiseaseRemark(String heartDiseaseRemark) {
+        this.heartDiseaseRemark = heartDiseaseRemark;
+    }
+
+    public BloodPressureStatus getBloodPressureStatus() {
+        return bloodPressureStatus;
+    }
+
+    public void setBloodPressureStatus(BloodPressureStatus bloodPressureStatus) {
+        this.bloodPressureStatus = bloodPressureStatus;
+    }
+
+    public int getCurrentBloodPressure() {
+        return currentBloodPressure;
+    }
+
+    public void setCurrentBloodPressure(int currentBloodPressure) {
+        this.currentBloodPressure = currentBloodPressure;
+    }
+
+    public BloodGlucoseStatus getBloodGlucoseStatus() {
+        return bloodGlucoseStatus;
+    }
+
+    public void setBloodGlucoseStatus(BloodGlucoseStatus bloodGlucoseStatus) {
+        this.bloodGlucoseStatus = bloodGlucoseStatus;
+    }
+
+    public int getCurrentBloodGlucose() {
+        return currentBloodGlucose;
+    }
+
+    public void setCurrentBloodGlucose(int currentBloodGlucose) {
+        this.currentBloodGlucose = currentBloodGlucose;
+    }
+
+    public Boolean getHasOtherDisease() {
+        return hasOtherDisease;
+    }
+
+    public void setHasOtherDisease(Boolean hasOtherDisease) {
+        this.hasOtherDisease = hasOtherDisease;
+    }
+
+    public String getOtherDiseaseRemark() {
+        return otherDiseaseRemark;
+    }
+
+    public void setOtherDiseaseRemark(String otherDiseaseRemark) {
+        this.otherDiseaseRemark = otherDiseaseRemark;
+    }
+
+    public Boolean getHasSmokingHistory() {
+        return hasSmokingHistory;
+    }
+
+    public void setHasSmokingHistory(Boolean hasSmokingHistory) {
+        this.hasSmokingHistory = hasSmokingHistory;
+    }
+
+    public Boolean getHasDrinkingHistory() {
+        return hasDrinkingHistory;
+    }
+
+    public void setHasDrinkingHistory(Boolean hasDrinkingHistory) {
+        this.hasDrinkingHistory = hasDrinkingHistory;
+    }
+
+    public AnaesthesiaAdverseReactions getAnaesthesiaAdverseReactions() {
+        return anaesthesiaAdverseReactions;
+    }
+
+    public void setAnaesthesiaAdverseReactions(AnaesthesiaAdverseReactions anaesthesiaAdverseReactions) {
+        this.anaesthesiaAdverseReactions = anaesthesiaAdverseReactions;
+    }
+
+    public Boolean getIsPregnant() {
+        return isPregnant;
+    }
+
+    public void setIsPregnant(Boolean isPregnant) {
+        this.isPregnant = isPregnant;
+    }
+
+    @Override
+    public String toString() {
+        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("birthday", birthday)
+                .append("gender", gender)
+                .append("guardian", guardian)
+                .append("mobilephone", mobilephone)
+                .append("telephone", telephone)
+                .append("email", email)
+                .append("qq", qq)
+                .append("wechat", wechat)
+                .append("residencePlace", residencePlace)
+                .append("allergicDrugs", allergicDrugs)
+                .append("allergenicFoods", allergenicFoods)
+                .append("otherAllergens", otherAllergens)
+                .append("hasHeartDisease", hasHeartDisease)
+                .append("heartDiseaseRemark", heartDiseaseRemark)
+                .append("bloodPressureStatus", bloodPressureStatus)
+                .append("currentBloodPressure", currentBloodPressure)
+                .append("bloodGlucoseStatus", bloodGlucoseStatus)
+                .append("currentBloodGlucose", currentBloodGlucose)
+                .append("hasOtherDisease", hasOtherDisease)
+                .append("otherDiseaseRemark", otherDiseaseRemark)
+                .append("hasSmokingHistory", hasSmokingHistory)
+                .append("hasDrinkingHistory", hasDrinkingHistory)
+                .append("anaesthesiaAdverseReactions", anaesthesiaAdverseReactions)
+                .append("isPregnant", isPregnant)
+                .toString();
+    }
 }

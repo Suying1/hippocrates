@@ -18,5 +18,24 @@
         <result property="otherAllergens" column="OTHER_ALLERGENS" typeHandler="SetTypeHandler"/>
         <result property="hasHeartDisease" column="HAS_HEART_DISEASE" typeHandler="BooleanTypeHandler"/>
         <result property="heartDiseaseRemark" column="HEART_DISEASE_REMARK" />
+        <result property="bloodPressureStatus" column="BLOOD_PRESSURE_STATUS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="currentBloodPressure" column="CURRENT_BLOOD_PRESSURE" />
+        <result property="bloodGlucoseStatus" column="BLOOD_GLUCOSE_STATUS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="currentBloodGlucose" column="CURRENT_BLOOD_GLUCOSE" />
+        <result property="hasOtherDisease" column="HAS_OTHER_DISEASE" typeHandler="BooleanTypeHandler" />
+        <result property="otherDiseaseRemark" column="OTHER_DISEASE_REMARK" />
+        <result property="hasSmokingHistory" column="HAS_SMOKING_HISTORY" typeHandler="BooleanTypeHandler" />
+        <result property="hasDrinkingHistory" column="HAS_DRINKING_HISTORY" typeHandler="BooleanTypeHandler" />
+        <result property="anaesthesiaAdverseReactions" column="ANAESTHESIA_ADVERSE_REACTIONS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="isPregnant" column="IS_PREGNANT" typeHandler="BooleanTypeHandler" />
+        <result property="createTime" column="CREATE_TIME" />
+        <result property="updateTime" column="UPDATE_TIME" />
+        <result property="createUser" column="CREATE_USER" />
+        <result property="updateUser" column="UPDATE_USER" />
+        <result property="extension" column="EXTENSION" />
     </resultMap>
+
+    <select id="selectByPK" parameterType="string" resultMap="baseResultMap" >
+        
+    </select>
 </mapper>
