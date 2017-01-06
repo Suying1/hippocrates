@@ -2,10 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.medicinefreedom.member.core.data.mapper.PatientBasicInfoMapper">
     <resultMap id="baseResultMap" type="org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO">
-        <id property="id" column="patient_id" />
-        <result property="name" column="patient_name" />
-        <result property="birthday" column="birthday" />
-        <result property="gender" column="gender" typeHandler="org.medicinefreedom.member.core.data.typehandler.GenderTypeHandler" />
-        <result property="guardian" column="guardian" />
+        <id property="id" column="patient_id"/>
+        <result property="name" column="patient_name"/>
+        <result property="birthday" column="birthday"/>
+        <result property="gender" column="gender" typeHandler="GenderTypeHandler"/>
+        <result property="guardian" column="patient_guardian"/>
+        <result property="mobilephone" column="mobilephone"/>
+        <result property="telephone" column="TELEPHONE"/>
+        <result property="email" column="EMAIL"/>
+        <result property="qq" column="QQ"/>
+        <result property="wechat" column="WECHAT"/>
+        <result property="residencePlace" column="RESIDENCE_PLACE"/>
+        <result property="allergicDrugs" column="ALLERGIC_DRUGS" typeHandler="SetTypeHandler"/>
+        <result property="allergenicFoods" column="ALLERGENIC_FOODS" typeHandler="SetTypeHandler"/>
+        <result property="otherAllergens" column="OTHER_ALLERGENS" typeHandler="SetTypeHandler"/>
+        <result property="hasHeartDisease" column="HAS_HEART_DISEASE" typeHandler="BooleanTypeHandler"/>
+        <result property="heartDiseaseRemark" column="HEART_DISEASE_REMARK" />
     </resultMap>
 </mapper>

@@ -4,6 +4,11 @@
     <settings>
         <setting name="logImpl" value="SLF4J"/>
     </settings>
+    <typeAliases>
+        <typeAlias type="org.medicinefreedom.member.core.data.typehandler.GenderTypeHandler" alias="GenderTypeHandler"/>
+        <typeAlias type="org.medicinefreedom.member.core.data.typehandler.SetTypeHandler" alias="SetTypeHandler"/>
+        <typeAlias type="org.medicinefreedom.member.core.data.typehandler.BooleanTypeHandler" alias="BooleanTypeHandler"/>
+    </typeAliases>
     <mappers>
         <mapper resource="org/medicinefreedom/member/core/data/mapper/PatientBasicInfoMapper.xml"/>
     </mappers>
