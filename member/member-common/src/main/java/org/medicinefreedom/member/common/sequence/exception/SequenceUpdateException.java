@@ -22,25 +22,16 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.mapper;
-
-import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
-
-import javax.inject.Named;
+package org.medicinefreedom.member.common.sequence.exception;
 
 /**
- * 通用说明：患者基本信息数据库操作类.
+ * 通用说明：序列更新失败异常.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/30 16:00
+ * @version 1.0.0  2017/1/9 16:11
  */
-@Named("patientBasicInfoMapper")
-public interface PatientBasicInfoMapper {
-    int insertPatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int updatePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int deletePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    PatientBasicInfoDO selectPatientBasicInfoById(String id);
+public class SequenceUpdateException extends RuntimeException {
+    public SequenceUpdateException(Exception e) {
+        super(e);
+    }
 }

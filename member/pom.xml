@@ -34,6 +34,7 @@
         <module>member-service-api</module>
         <module>member-core</module>
         <module>member-web</module>
+        <module>member-common</module>
     </modules>
 
 

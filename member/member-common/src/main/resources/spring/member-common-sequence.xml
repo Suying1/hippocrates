@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 序列生成器 -->
+    <bean id="sequenceGenerator" class="org.medicinefreedom.member.common.sequence.DefaultSequenceGenerator">
+        <property name="sequenceDAO" ref="sequenceDAO" />
+        <property name="transactionTemplate" ref="sequenceTransactionTemplate" />
+    </bean>
+
+    <!-- 序列DAO -->
+    <bean id="sequenceDAO" class="org.medicinefreedom.member.common.sequence.dao.SequenceDAOImpl">
+        <property name="dataSource" ref="sequenceDataSource" />
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="sequenceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="sequenceDataSource"/>
+    </bean>
+    <!-- 事务模板 -->
+    <bean name="sequenceTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="sequenceTransactionManager" />
+    </bean>
+</beans>

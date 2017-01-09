@@ -35,7 +35,46 @@
         <result property="extension" column="EXTENSION" />
     </resultMap>
 
-    <select id="selectByPK" parameterType="string" resultMap="baseResultMap" >
-        
+    <insert id="insertPatientBasicInfo" parameterType="PatientBasicInfoDO">
+
+    </insert>
+
+    <select id="selectPatientBasicInfoById" parameterType="string" resultMap="baseResultMap" >
+        SELECT
+            PATIENT_ID,
+            PATIENT_NAME,
+            BIRTHDAY,
+            GENDER,
+            PATIENT_GUARDIAN,
+            MOBILEPHONE,
+            TELEPHONE,
+            EMAIL,
+            QQ,
+            WECHAT,
+            RESIDENCE_PLACE,
+            ALLERGIC_DRUGS,
+            ALLERGENIC_FOODS,
+            OTHER_ALLERGENS,
+            HAS_HEART_DISEASE,
+            HEART_DISEASE_REMARK,
+            BLOOD_PRESSURE_STATUS,
+            CURRENT_BLOOD_PRESSURE,
+            BLOOD_GLUCOSE_STATUS,
+            CURRENT_BLOOD_GLUCOSE,
+            HAS_OTHER_DISEASE,
+            OTHER_DISEASE_REMARK,
+            HAS_SMOKING_HISTORY,
+            HAS_DRINKING_HISTORY,
+            ANAESTHESIA_ADVERSE_REACTIONS,
+            IS_PREGNANT,
+            CREATE_TIME,
+            UPDATE_TIME,
+            CREATE_USER,
+            UPDATE_USER,
+            EXTENSION
+        FROM
+            MEMBER.T_PATIENT
+        WHERE
+            PATIENT_ID = #{id};
     </select>
 </mapper>

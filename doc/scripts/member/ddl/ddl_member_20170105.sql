@@ -48,3 +48,21 @@ CREATE TABLE `t_patient` (
   `EXTENSION` VARCHAR(1024) COMMENT '扩展字段',
   PRIMARY KEY (`PATIENT_ID`)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT='患者基本信息表';
+
+
+-- -----------------------------
+-- 表名：通用序列表
+-- 作者：shucunbin
+-- 日期：2017/01/09
+-- 版本：1.0.0
+-- 描述：用于生成唯一标识.
+-- -----------------------------
+DROP TABLE IF EXISTS `t_sequence`;
+CREATE TABLE `t_sequence` (
+  `SEQ_NAME` VARCHAR(64) NOT NULL COMMENT '序列名称（标识）',
+  `CURRENT_VALUE` INT(11) NOT NULL DEFAULT 1 COMMENT '序列当前值',
+  `INCREMENT` SMALLINT(6) NOT NULL DEFAULT 1 COMMENT '序列自增量',
+  `CAPACITY` SMALLINT(6) NOT NULL DEFAULT 10000 COMMENT '每次取值容量',
+  `THRESHOLD` SMALLINT(6) NOT NULL DEFAULT 7500 COMMENT '阈值',
+  PRIMARY KEY (`SEQ_NAME`)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT='通用序列表';

@@ -22,25 +22,22 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.mapper;
+package org.medicinefreedom.member.common.sequence.dao;
 
-import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
+import org.medicinefreedom.member.common.sequence.domain.Sequence;
 
-import javax.inject.Named;
+import java.util.List;
 
 /**
- * 通用说明：患者基本信息数据库操作类.
+ * 通用说明：Sequence 数据访问接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/30 16:00
+ * @version 1.0.0  2017/1/9 14:11
  */
-@Named("patientBasicInfoMapper")
-public interface PatientBasicInfoMapper {
-    int insertPatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
+public interface SequenceDAO {
+    List<Sequence> listAll();
 
-    int updatePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
+    Sequence lock(String sequenceName);
 
-    int deletePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    PatientBasicInfoDO selectPatientBasicInfoById(String id);
+    void update(String sequenceName, long oldCurrentValue, long newCurrentValue);
 }

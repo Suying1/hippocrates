@@ -22,25 +22,20 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.mapper;
-
-import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
-
-import javax.inject.Named;
+package org.medicinefreedom.member.common.sequence;
 
 /**
- * 通用说明：患者基本信息数据库操作类.
+ * 通用说明：基于 Table 策略的唯一标识生成器接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/30 16:00
+ * @version 1.0.0  2017/1/9 10:59
  */
-@Named("patientBasicInfoMapper")
-public interface PatientBasicInfoMapper {
-    int insertPatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int updatePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int deletePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    PatientBasicInfoDO selectPatientBasicInfoById(String id);
+public interface SequenceGenerator {
+    /**
+     * 获取指定序列的下一个序列值.
+     *
+     * @param sequenceName 序列名称，表明序列类型.
+     * @return 最新的序列值.
+     */
+    Long nextSequence(String sequenceName);
 }
