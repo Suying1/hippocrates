@@ -29,6 +29,8 @@ import org.medicinefreedom.member.common.sequence.dao.SequenceDAO;
 import org.medicinefreedom.member.common.sequence.domain.Sequence;
 import org.medicinefreedom.member.common.sequence.exception.SequenceUpdateException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.core.task.TaskRejectedException;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -67,6 +69,8 @@ public class DefaultSequenceGenerator implements SequenceGenerator, Initializing
     // 记录各个序列的阈值
     private Map<String, Integer> sequenceThresholdMap = new HashMap<>();
 
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
     @Override
     public Long nextSequence(final String sequenceName) {
         Long sequence = sequenceBuffer.get(sequenceName).poll();
@@ -76,15 +80,13 @@ public class DefaultSequenceGenerator implements SequenceGenerator, Initializing
             return sequence;
         }
 
-        // 缓存里的序列队列已为空，立即刷新缓存
-        // TODO: 2017/1/9
-        return 0L;
-        /*
-        基本要求：
-        1. 从数据库表 T_SEQUENCE 表中获取序列当前值（批量取出，避免频繁范围数据库表）
-        2. 为了避免突然需求大量的序列值，应设置阈值（threshold）
-        3. 须考虑并发问题
-         */
+        // 缓存里的序列队列已为空，刷新缓存并获取
+        try {
+            asyncFlushSequenceBuffer(sequenceName);
+            return nextSequence(sequenceName);
+        } catch (Exception ex) {
+            return nextSequence(sequenceName);
+        }
     }
 
     @Override
@@ -94,6 +96,7 @@ public class DefaultSequenceGenerator implements SequenceGenerator, Initializing
             for (Sequence sequence : sequenceList) {
                 sequenceCapacityMap.put(sequence.getName(), sequence.getCapacity());
                 sequenceThresholdMap.put(sequence.getName(), sequence.getThreshold());
+                sequenceLocks.put(sequence.getName(), new ReentrantLock());
 
                 flushSequenceBuffer(sequence.getName());
             }
@@ -130,9 +133,31 @@ public class DefaultSequenceGenerator implements SequenceGenerator, Initializing
         int threshold = sequenceThresholdMap.get(sequenceName);
         int capacity = sequenceCapacityMap.get(sequenceName);
 
-        if (capacity - countSequenceInUse.get(sequenceName).intValue() > threshold) {
-            // 刷新序列缓存
-            // TODO: 2017/1/9  
+        if (capacity - countSequenceInUse.get(sequenceName).intValue() < threshold) {
+            // 为了不影响本次序列的获取速度，异步刷新序列缓存
+            asyncFlushSequenceBuffer(sequenceName);
+        }
+    }
+
+    private void asyncFlushSequenceBuffer(String sequenceName) {
+        try {
+            threadPoolTaskExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    if (sequenceLocks.get(sequenceName).tryLock()) {
+                        try {
+                            flushSequenceBuffer(sequenceName);
+                        } catch (SequenceUpdateException e) {
+                            //  更新异常则异步线程更新
+                            asyncFlushSequenceBuffer(sequenceName);
+                        } finally {
+                            sequenceLocks.get(sequenceName).unlock();
+                        }
+                    }
+                }
+            });
+        } catch (TaskRejectedException ignore) {
+            // 不做处理
         }
     }
 
@@ -142,5 +167,9 @@ public class DefaultSequenceGenerator implements SequenceGenerator, Initializing
 
     public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
         this.transactionTemplate = transactionTemplate;
+    }
+
+    public void setThreadPoolTaskExecutor(ThreadPoolTaskExecutor threadPoolTaskExecutor) {
+        this.threadPoolTaskExecutor = threadPoolTaskExecutor;
     }
 }
