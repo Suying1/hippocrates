@@ -34,4 +34,6 @@ import org.medicinefreedom.member.core.model.PatientBasicInfo;
  */
 public interface PatientBasicInfoService {
     String savePatientBasicInfo(PatientBasicInfo patientBasicInfo);
+
+
 }

@@ -24,6 +24,7 @@
 
 package org.medicinefreedom.member.core.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.medicinefreedom.member.core.enums.AnaesthesiaAdverseReactions;
 import org.medicinefreedom.member.core.enums.BloodGlucoseStatus;
 import org.medicinefreedom.member.core.enums.BloodPressureStatus;
@@ -331,5 +332,37 @@ public class PatientBasicInfo {
 
     public void setPregnant(Boolean pregnant) {
         isPregnant = pregnant;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("patientId", patientId)
+                .append("name", name)
+                .append("birthday", birthday)
+                .append("gender", gender)
+                .append("guardian", guardian)
+                .append("mobilephone", mobilephone)
+                .append("telephone", telephone)
+                .append("email", email)
+                .append("qq", qq)
+                .append("wechat", wechat)
+                .append("residencePlace", residencePlace)
+                .append("allergicDrugs", allergicDrugs)
+                .append("allergenicFoods", allergenicFoods)
+                .append("otherAllergens", otherAllergens)
+                .append("hasHeartDisease", hasHeartDisease)
+                .append("heartDiseaseRemark", heartDiseaseRemark)
+                .append("bloodPressureStatus", bloodPressureStatus)
+                .append("currentBloodPressure", currentBloodPressure)
+                .append("bloodGlucoseStatus", bloodGlucoseStatus)
+                .append("currentBloodGlucose", currentBloodGlucose)
+                .append("hasOtherDisease", hasOtherDisease)
+                .append("otherDiseaseRemark", otherDiseaseRemark)
+                .append("hasSmokingHistory", hasSmokingHistory)
+                .append("hasDrinkingHistory", hasDrinkingHistory)
+                .append("anaesthesiaAdverseReactions", anaesthesiaAdverseReactions)
+                .append("isPregnant", isPregnant)
+                .toString();
     }
 }

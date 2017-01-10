@@ -33,6 +33,8 @@ import org.medicinefreedom.member.core.data.mapper.PatientBasicInfoMapper;
 import org.medicinefreedom.member.core.model.PatientBasicInfo;
 import org.medicinefreedom.member.core.service.PatientBasicInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -54,6 +56,7 @@ public class PatientBasicInfoServiceImpl implements PatientBasicInfoService {
     private PatientBasicInfoMapper patientBasicInfoMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public String savePatientBasicInfo(PatientBasicInfo patientBasicInfo) {
         if (patientBasicInfo == null) {
             return StringUtils.EMPTY;
