@@ -22,25 +22,16 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.mapper;
+package org.medicinefreedom.member.core.service;
 
-import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
-
-import javax.inject.Named;
+import org.medicinefreedom.member.core.model.PatientBasicInfo;
 
 /**
- * 通用说明：患者基本信息数据库操作类.
+ * 通用说明：患者基本信息服务接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/30 16:00
+ * @version 1.0.0  2017/1/10 10:09
  */
-@Named("patientBasicInfoMapper")
-public interface PatientBasicInfoMapper {
-    int insertPatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int deletePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int updatePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    PatientBasicInfoDO selectPatientBasicInfoById(String id);
+public interface PatientBasicInfoService {
+    String savePatientBasicInfo(PatientBasicInfo patientBasicInfo);
 }

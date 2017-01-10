@@ -22,25 +22,14 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.mapper;
-
-import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
-
-import javax.inject.Named;
+package org.medicinefreedom.member.common.constant;
 
 /**
- * 通用说明：患者基本信息数据库操作类.
+ * 通用说明：常量类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/30 16:00
+ * @version 1.0.0  2017/1/10 15:58
  */
-@Named("patientBasicInfoMapper")
-public interface PatientBasicInfoMapper {
-    int insertPatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int deletePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    int updatePatientBasicInfo(PatientBasicInfoDO patientBasicInfoDO);
-
-    PatientBasicInfoDO selectPatientBasicInfoById(String id);
+public interface MemberConstant {
+    String SEQ_NAME_PATIENT_ID = "seq_patient_id";
 }

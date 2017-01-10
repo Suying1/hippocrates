@@ -11,7 +11,7 @@
         <typeAlias type="org.apache.ibatis.type.EnumOrdinalTypeHandler" alias="EnumOrdinalTypeHandler"/>
         <typeAlias type="org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO" alias="PatientBasicInfoDO" />
     </typeAliases>
-    <mappers>
-        <mapper resource="org/medicinefreedom/member/core/data/mapper/PatientBasicInfoMapper.xml"/>
-    </mappers>
+    <typeHandlers>
+        <package name="org.medicinefreedom.member.core.data.typehandler"/>
+    </typeHandlers>
 </configuration>

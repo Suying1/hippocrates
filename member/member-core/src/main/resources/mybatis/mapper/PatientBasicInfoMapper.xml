@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2016 Medicine Freedom Organization.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.medicinefreedom.member.core.data.mapper.PatientBasicInfoMapper">
+    <resultMap id="baseResultMap" type="org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO">
+        <id property="id" column="patient_id"/>
+        <result property="name" column="patient_name"/>
+        <result property="birthday" column="birthday"/>
+        <result property="gender" column="gender" typeHandler="GenderTypeHandler"/>
+        <result property="guardian" column="patient_guardian"/>
+        <result property="mobilephone" column="mobilephone"/>
+        <result property="telephone" column="TELEPHONE"/>
+        <result property="email" column="EMAIL"/>
+        <result property="qq" column="QQ"/>
+        <result property="wechat" column="WECHAT"/>
+        <result property="residencePlace" column="RESIDENCE_PLACE"/>
+        <result property="allergicDrugs" column="ALLERGIC_DRUGS" typeHandler="SetTypeHandler"/>
+        <result property="allergenicFoods" column="ALLERGENIC_FOODS" typeHandler="SetTypeHandler"/>
+        <result property="otherAllergens" column="OTHER_ALLERGENS" typeHandler="SetTypeHandler"/>
+        <result property="hasHeartDisease" column="HAS_HEART_DISEASE" typeHandler="BooleanTypeHandler"/>
+        <result property="heartDiseaseRemark" column="HEART_DISEASE_REMARK" />
+        <result property="bloodPressureStatus" column="BLOOD_PRESSURE_STATUS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="currentBloodPressure" column="CURRENT_BLOOD_PRESSURE" />
+        <result property="bloodGlucoseStatus" column="BLOOD_GLUCOSE_STATUS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="currentBloodGlucose" column="CURRENT_BLOOD_GLUCOSE" />
+        <result property="hasOtherDisease" column="HAS_OTHER_DISEASE" typeHandler="BooleanTypeHandler" />
+        <result property="otherDiseaseRemark" column="OTHER_DISEASE_REMARK" />
+        <result property="hasSmokingHistory" column="HAS_SMOKING_HISTORY" typeHandler="BooleanTypeHandler" />
+        <result property="hasDrinkingHistory" column="HAS_DRINKING_HISTORY" typeHandler="BooleanTypeHandler" />
+        <result property="anaesthesiaAdverseReactions" column="ANAESTHESIA_ADVERSE_REACTIONS" typeHandler="EnumOrdinalTypeHandler" />
+        <result property="isPregnant" column="IS_PREGNANT" typeHandler="BooleanTypeHandler" />
+        <result property="createTime" column="CREATE_TIME" />
+        <result property="updateTime" column="UPDATE_TIME" />
+        <result property="createUser" column="CREATE_USER" />
+        <result property="updateUser" column="UPDATE_USER" />
+        <result property="extension" column="EXTENSION" />
+    </resultMap>
+
+    <insert id="insertPatientBasicInfo" parameterType="PatientBasicInfoDO">
+        <![CDATA[
+        INSERT INTO MEMBER.T_PATIENT
+          (PATIENT_ID,
+           PATIENT_NAME,
+           BIRTHDAY,
+           GENDER,
+           PATIENT_GUARDIAN,
+           MOBILEPHONE,
+           TELEPHONE,
+           EMAIL,
+           QQ,
+           WECHAT,
+           RESIDENCE_PLACE,
+           ALLERGIC_DRUGS,
+           ALLERGENIC_FOODS,
+           OTHER_ALLERGENS,
+           HAS_HEART_DISEASE,
+           HEART_DISEASE_REMARK,
+           BLOOD_PRESSURE_STATUS,
+           CURRENT_BLOOD_PRESSURE,
+           BLOOD_GLUCOSE_STATUS,
+           CURRENT_BLOOD_GLUCOSE,
+           HAS_OTHER_DISEASE,
+           OTHER_DISEASE_REMARK,
+           HAS_SMOKING_HISTORY,
+           HAS_DRINKING_HISTORY,
+           ANAESTHESIA_ADVERSE_REACTIONS,
+           IS_PREGNANT,
+           CREATE_TIME,
+           UPDATE_TIME,
+           CREATE_USER,
+           UPDATE_USER,
+           EXTENSION)
+        VALUES
+          (#{id},
+           #{name},
+           #{birthday},
+           #{gender},
+           #{guardian},
+           #{mobilephone},
+           #{telephone},
+           #{email},
+           #{qq},
+           #{wechat},
+           #{residencePlace},
+           #{allergicDrugs},
+           #{allergenicFoods},
+           #{otherAllergens},
+           #{hasHeartDisease},
+           #{heartDiseaseRemark},
+           #{bloodPressureStatus},
+           #{currentBloodPressure},
+           #{bloodGlucoseStatus},
+           #{currentBloodGlucose},
+           #{hasOtherDisease},
+           #{otherDiseaseRemark},
+           #{hasSmokingHistory},
+           #{hasDrinkingHistory},
+           #{anaesthesiaAdverseReactions},
+           #{isPregnant},
+           now(),
+           now(),
+           #{createUser},
+           #{updateUser},
+           #{extension});
+        ]]>
+    </insert>
+
+    <delete id="deletePatientBasicInfo">
+        <![CDATA[
+        DELETE FROM T_PATIENT WHERE PATIENT_ID = #{id}
+        ]]>
+    </delete>
+
+    <update id="updatePatientBasicInfo" parameterType="PatientBasicInfoDO">
+        <![CDATA[
+        UPDATE member . t_patient
+            SET PATIENT_NAME = #{name},
+            BIRTHDAY = #{birthday},
+            GENDER = #{gender},
+            PATIENT_GUARDIAN = #{guardian},
+            MOBILEPHONE = #{mobilephone},
+            TELEPHONE = #{telephone},
+            EMAIL = #{email},
+            QQ = #{qq},
+            WECHAT = #{wechat},
+            RESIDENCE_PLACE = #{residencePlace},
+            ALLERGIC_DRUGS = #{allergicDrugs},
+            ALLERGENIC_FOODS = #{allergenicFoods},
+            OTHER_ALLERGENS = #{otherAllergens},
+            HAS_HEART_DISEASE = #{hasHeartDisease},
+            HEART_DISEASE_REMARK = #{heartDiseaseRemark},
+            BLOOD_PRESSURE_STATUS = #{bloodPressureStatus},
+            CURRENT_BLOOD_PRESSURE = #{currentBloodPressure},
+            BLOOD_GLUCOSE_STATUS = #{bloodGlucoseStatus},
+            CURRENT_BLOOD_GLUCOSE = #{currentBloodGlucose},
+            HAS_OTHER_DISEASE = #{hasOtherDisease},
+            OTHER_DISEASE_REMARK = #{otherDiseaseRemark},
+            HAS_SMOKING_HISTORY = #{hasSmokingHistory},
+            HAS_DRINKING_HISTORY = #{hasDrinkingHistory},
+            ANAESTHESIA_ADVERSE_REACTIONS = #{anaesthesiaAdverseReactions},
+            IS_PREGNANT = #{isPregnant},
+            UPDATE_TIME = now(),
+            UPDATE_USER = #{updateUser},
+            EXTENSION = #{extension}
+        WHERE PATIENT_ID = #{id};
+        ]]>
+    </update>
+
+    <select id="selectPatientBasicInfoById" parameterType="string" resultMap="baseResultMap" >
+        <![CDATA[
+        SELECT
+            PATIENT_ID,
+            PATIENT_NAME,
+            BIRTHDAY,
+            GENDER,
+            PATIENT_GUARDIAN,
+            MOBILEPHONE,
+            TELEPHONE,
+            EMAIL,
+            QQ,
+            WECHAT,
+            RESIDENCE_PLACE,
+            ALLERGIC_DRUGS,
+            ALLERGENIC_FOODS,
+            OTHER_ALLERGENS,
+            HAS_HEART_DISEASE,
+            HEART_DISEASE_REMARK,
+            BLOOD_PRESSURE_STATUS,
+            CURRENT_BLOOD_PRESSURE,
+            BLOOD_GLUCOSE_STATUS,
+            CURRENT_BLOOD_GLUCOSE,
+            HAS_OTHER_DISEASE,
+            OTHER_DISEASE_REMARK,
+            HAS_SMOKING_HISTORY,
+            HAS_DRINKING_HISTORY,
+            ANAESTHESIA_ADVERSE_REACTIONS,
+            IS_PREGNANT,
+            CREATE_TIME,
+            UPDATE_TIME,
+            CREATE_USER,
+            UPDATE_USER,
+            EXTENSION
+        FROM
+            MEMBER.T_PATIENT
+        WHERE
+            PATIENT_ID = #{id};
+        ]]>
+    </select>
+</mapper>
