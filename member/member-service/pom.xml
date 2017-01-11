@@ -15,6 +15,22 @@
             <groupId>org.medicinefreedom</groupId>
             <artifactId>member-service-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.medicinefreedom</groupId>
+            <artifactId>member-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>member-service</finalName>
