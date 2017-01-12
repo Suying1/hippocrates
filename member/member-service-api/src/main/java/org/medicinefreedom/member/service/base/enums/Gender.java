@@ -22,16 +22,38 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.base.enums;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：性别枚举类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2016/12/28 9:33
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public enum Gender {
+    MALE("M", "男性"),
+    FEMALE("F", "女性"),;
+
+    public final String code;
+    public final String description;
+
+    private static Map<String, Gender> codeLookup = new HashMap<>();
+
+    static {
+        for (Gender gender : Gender.values()) {
+            codeLookup.put(gender.code, gender);
+        }
+    }
+
+    Gender(String value, String description) {
+        this.code = value;
+        this.description = description;
+    }
+
+    public static Gender forCode(String code) {
+        return codeLookup.get(code);
+    }
 }

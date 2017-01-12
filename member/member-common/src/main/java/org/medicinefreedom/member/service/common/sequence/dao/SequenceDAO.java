@@ -22,16 +22,22 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.common.sequence.dao;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.medicinefreedom.member.service.common.sequence.domain.Sequence;
+
+import java.util.List;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：Sequence 数据访问接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/9 14:11
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public interface SequenceDAO {
+    List<Sequence> listAll();
+
+    Sequence lock(String sequenceName);
+
+    void update(String sequenceName, long oldCurrentValue, long newCurrentValue);
 }

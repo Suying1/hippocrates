@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
-
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+package org.medicinefreedom.member.service.common.constant;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：常量类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/10 15:58
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public interface MemberConstant {
+    String SEQ_NAME_PATIENT_ID = "seq_patient_id";
 }

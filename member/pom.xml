@@ -40,9 +40,10 @@
 
     <properties>
         <member.service.version>1.0.0-SNAPSHOT</member.service.version>
-        <mybatis.version>3.4.1</mybatis.version>
         <spring.version>4.3.5.RELEASE</spring.version>
+        <mybatis.version>3.4.1</mybatis.version>
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
+        <mybatis-ehcache.version>1.0.0</mybatis-ehcache.version>
         <druid.version>1.0.27</druid.version>
         <mysql.version>6.0.5</mysql.version>
         <javax.inject.version>1</javax.inject.version>
@@ -50,7 +51,7 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <fastjson.version>1.2.23</fastjson.version>
         <slf4j.version>1.7.22</slf4j.version>
-        <logback-classic.version>1.1.8</logback-classic.version>
+        <logback.version>1.1.8</logback.version>
         <dozer.version>5.5.1</dozer.version>
         <junit.version>4.12</junit.version>
         <cxf.version>3.1.9</cxf.version>
@@ -69,6 +70,11 @@
             <!--</dependency>-->
 
             <!-- self -->
+            <dependency>
+                <groupId>org.medicinefreedom</groupId>
+                <artifactId>member-service</artifactId>
+                <version>${member.service.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.medicinefreedom</groupId>
                 <artifactId>member-service-api</artifactId>
@@ -137,6 +143,16 @@
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
 
             <!-- mybatis -->
@@ -151,6 +167,13 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis-spring</artifactId>
                 <version>${mybatis-spring.version}</version>
+            </dependency>
+
+            <!-- mybatis-ehcache -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-ehcache</artifactId>
+                <version>${mybatis-ehcache.version}</version>
             </dependency>
 
             <!-- druid -->
@@ -181,9 +204,19 @@
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${logback-classic.version}</version>
+                <version>${logback.version}</version>
             </dependency>
 
             <!-- dozer -->

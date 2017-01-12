@@ -22,27 +22,26 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.dataobject;
+package org.medicinefreedom.member.core.vo;
 
-import org.medicinefreedom.member.core.enums.BloodGlucoseStatus;
-import org.medicinefreedom.member.core.enums.BloodPressureStatus;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.medicinefreedom.member.core.enums.Gender;
 import org.medicinefreedom.member.core.enums.AnaesthesiaAdverseReactions;
+import org.medicinefreedom.member.core.enums.BloodGlucoseStatus;
+import org.medicinefreedom.member.core.enums.BloodPressureStatus;
 
 import java.util.Date;
 import java.util.Set;
 
 /**
- * 通用说明：患者基本信息，对应数据库表<tt>t_patient</tt>.
+ * 通用说明：患者基本信息实体类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/28 9:12
+ * @version 1.0.0  2017/1/10 10:33
  */
-public class PatientBasicInfoDO extends BaseDO {
-    private static final long serialVersionUID = 1538852436138626799L;
-
+public class PatientBasicInfoVO {
     // 唯一标识
-    private String id;
+    private String patientId;
 
     // 姓名
     private String name;
@@ -127,13 +126,12 @@ public class PatientBasicInfoDO extends BaseDO {
     // 是否怀孕
     private Boolean isPregnant;
 
-
-    public String getId() {
-        return id;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     public String getName() {
@@ -328,18 +326,18 @@ public class PatientBasicInfoDO extends BaseDO {
         this.anaesthesiaAdverseReactions = anaesthesiaAdverseReactions;
     }
 
-    public Boolean getIsPregnant() {
+    public Boolean getPregnant() {
         return isPregnant;
     }
 
-    public void setIsPregnant(Boolean isPregnant) {
-        this.isPregnant = isPregnant;
+    public void setPregnant(Boolean pregnant) {
+        isPregnant = pregnant;
     }
 
     @Override
     public String toString() {
-        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
-                .append("id", id)
+        return new ToStringBuilder(this)
+                .append("patientId", patientId)
                 .append("name", name)
                 .append("birthday", birthday)
                 .append("gender", gender)

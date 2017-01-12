@@ -22,16 +22,35 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.request;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.medicinefreedom.member.service.base.model.PatientBasicInfo;
+import org.medicinefreedom.member.service.base.request.BaseRequest;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：患者基本信息请求类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/11 10:45
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public class PatientBasicInfoRequest extends BaseRequest {
+    private static final long serialVersionUID = 2519870179332618612L;
+
+    private PatientBasicInfo patientBasicInfo;
+
+    public PatientBasicInfo getPatientBasicInfo() {
+        return patientBasicInfo;
+    }
+
+    public void setPatientBasicInfo(PatientBasicInfo patientBasicInfo) {
+        this.patientBasicInfo = patientBasicInfo;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("patientBasicInfo", patientBasicInfo)
+                .toString();
+    }
 }

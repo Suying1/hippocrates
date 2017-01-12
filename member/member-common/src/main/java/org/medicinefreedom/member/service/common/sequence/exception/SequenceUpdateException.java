@@ -22,16 +22,16 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
-
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+package org.medicinefreedom.member.service.common.sequence.exception;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：序列更新失败异常.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/9 16:11
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public class SequenceUpdateException extends RuntimeException {
+    public SequenceUpdateException(Exception e) {
+        super(e);
+    }
 }

@@ -41,7 +41,7 @@ import java.sql.SQLException;
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
  * @version 1.0.0  2017/1/4 17:42
  */
-@MappedTypes(org.medicinefreedom.member.core.enums.Gender.class)
+@MappedTypes(Gender.class)
 @MappedJdbcTypes(value = JdbcType.VARCHAR, includeNullJdbcType = true)
 public class GenderTypeHandler extends BaseTypeHandler<Gender> {
     @Override

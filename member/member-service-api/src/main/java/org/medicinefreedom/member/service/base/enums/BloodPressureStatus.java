@@ -22,16 +22,32 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
-
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+package org.medicinefreedom.member.service.base.enums;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：血压状态枚举类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/4 14:16
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public enum BloodPressureStatus {
+    NORMAL("normal", "正常"),
+    HYPERTENSION("hypertension", "高血压"),
+    HYPOTENSION("hypotension", "低血压"),;
+
+    private final String status;
+    private final String description;
+
+    BloodPressureStatus(String status, String description) {
+        this.status = status;
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

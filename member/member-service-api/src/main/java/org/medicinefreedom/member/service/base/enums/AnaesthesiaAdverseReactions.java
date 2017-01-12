@@ -22,16 +22,32 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
-
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+package org.medicinefreedom.member.service.base.enums;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：麻醉不良反应枚举类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/4 15:55
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public enum AnaesthesiaAdverseReactions {
+    NEVER("never", "没有不良反应"),
+    EVER("ever", "有不良反应"),
+    UNKNOWN("unknown", "不知道"),;
+
+    private final String status;
+    private final String description;
+
+    AnaesthesiaAdverseReactions(String status, String description) {
+        this.status = status;
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

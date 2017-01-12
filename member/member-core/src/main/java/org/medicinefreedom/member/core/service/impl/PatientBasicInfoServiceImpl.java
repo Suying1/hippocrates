@@ -26,12 +26,14 @@ package org.medicinefreedom.member.core.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
-import org.medicinefreedom.member.common.constant.MemberConstant;
-import org.medicinefreedom.member.common.sequence.SequenceGenerator;
+import org.medicinefreedom.member.service.common.constant.MemberConstant;
+import org.medicinefreedom.member.service.common.sequence.SequenceGenerator;
 import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
 import org.medicinefreedom.member.core.data.mapper.PatientBasicInfoMapper;
-import org.medicinefreedom.member.core.model.PatientBasicInfo;
+import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
 import org.medicinefreedom.member.core.service.PatientBasicInfoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +48,8 @@ import javax.annotation.Resource;
  */
 @Service(value = "patientBasicInfoService")
 public class PatientBasicInfoServiceImpl implements PatientBasicInfoService {
+    private static final Logger logger = LoggerFactory.getLogger(PatientBasicInfoServiceImpl.class);
+
     @Resource(name = "beanMapper")
     private Mapper mapper;
 
@@ -57,15 +61,17 @@ public class PatientBasicInfoServiceImpl implements PatientBasicInfoService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public String savePatientBasicInfo(PatientBasicInfo patientBasicInfo) {
-        if (patientBasicInfo == null) {
+    public String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO) {
+        logger.info("[APP->MEMBER]保存患者基本信息开始，请求参数：{}", patientBasicInfoVO);
+        if (patientBasicInfoVO == null) {
             return StringUtils.EMPTY;
         }
 
         String patientId = String.valueOf(sequenceGenerator.nextSequence(MemberConstant.SEQ_NAME_PATIENT_ID));
-        patientBasicInfo.setPatientId(patientId);
-        PatientBasicInfoDO patientBasicInfoDO = mapper.map(patientBasicInfo, PatientBasicInfoDO.class);
+        patientBasicInfoVO.setPatientId(patientId);
+        PatientBasicInfoDO patientBasicInfoDO = mapper.map(patientBasicInfoVO, PatientBasicInfoDO.class);
         patientBasicInfoMapper.insertPatientBasicInfo(patientBasicInfoDO);
+        logger.info("[MEMBER->APP]保存患者基本信息结束，已保存的患者标识为：{}",patientId);
         return patientId;
     }
 }

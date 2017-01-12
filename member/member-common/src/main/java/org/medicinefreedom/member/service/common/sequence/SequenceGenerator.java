@@ -22,16 +22,20 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
-
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+package org.medicinefreedom.member.service.common.sequence;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：基于 Table 策略的唯一标识生成器接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/9 10:59
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public interface SequenceGenerator {
+    /**
+     * 获取指定序列的下一个序列值.
+     *
+     * @param sequenceName 序列名称，表明序列类型.
+     * @return 最新的序列值.
+     */
+    Long nextSequence(String sequenceName);
 }

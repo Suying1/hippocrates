@@ -22,16 +22,19 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.validator.impl;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.medicinefreedom.member.service.validator.RequestValidator;
+import org.medicinefreedom.member.service.request.PatientBasicInfoRequest;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：病人基本信息请求类校验器.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/11 15:59
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public class PatientBasicInfoRequestValidator extends RequestValidator<PatientBasicInfoRequest> {
+    @Override
+    protected void doValidate(PatientBasicInfoRequest request) {
+    }
 }

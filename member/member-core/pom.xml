@@ -7,13 +7,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>member-core</artifactId>
-    <packaging>war</packaging>
-    <name>member-core Maven Webapp</name>
+    <packaging>jar</packaging>
+    <name>member-core project</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>org.medicinefreedom</groupId>
             <artifactId>member-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.medicinefreedom</groupId>
+            <artifactId>member-service-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>

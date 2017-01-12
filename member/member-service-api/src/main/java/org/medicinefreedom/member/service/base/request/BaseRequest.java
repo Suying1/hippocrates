@@ -22,16 +22,36 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.base.request;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：通用请求对象.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/11 10:46
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+public class BaseRequest implements Serializable{
+    private static final long serialVersionUID = -2853960317441850806L;
+
+    // 扩展信息（JSON）格式
+    private String extenstion;
+
+    public String getExtenstion() {
+        return extenstion;
+    }
+
+    public void setExtenstion(String extenstion) {
+        this.extenstion = extenstion;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("extenstion", extenstion)
+                .toString();
+    }
 }

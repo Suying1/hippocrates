@@ -22,16 +22,40 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.response;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.medicinefreedom.member.service.base.response.BaseResponse;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：创建患者信息响应类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/11 10:40
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+public class CreatePatientInfoResponse extends BaseResponse {
+    private static final long serialVersionUID = -421588874355989947L;
+
+    private String patientId;
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("patientId", patientId)
+                .toString();
+    }
 }

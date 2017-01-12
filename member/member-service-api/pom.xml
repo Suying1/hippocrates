@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>member-service-api</artifactId>
     <packaging>jar</packaging>
-    <name>member api project</name>
+    <name>member-api project</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>

@@ -22,119 +22,156 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.data.dataobject;
+package org.medicinefreedom.member.service.base.model;
 
-import org.medicinefreedom.member.core.enums.BloodGlucoseStatus;
-import org.medicinefreedom.member.core.enums.BloodPressureStatus;
-import org.medicinefreedom.member.core.enums.Gender;
-import org.medicinefreedom.member.core.enums.AnaesthesiaAdverseReactions;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.medicinefreedom.member.service.base.enums.AnaesthesiaAdverseReactions;
+import org.medicinefreedom.member.service.base.enums.BloodGlucoseStatus;
+import org.medicinefreedom.member.service.base.enums.BloodPressureStatus;
+import org.medicinefreedom.member.service.base.enums.Gender;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
 /**
- * 通用说明：患者基本信息，对应数据库表<tt>t_patient</tt>.
+ * 通用说明：患者基本信息类.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2016/12/28 9:12
+ * @version 1.0.0  2017/1/11 10:47
  */
-public class PatientBasicInfoDO extends BaseDO {
-    private static final long serialVersionUID = 1538852436138626799L;
-
-    // 唯一标识
-    private String id;
-
-    // 姓名
+public class PatientBasicInfo {
+    /**
+     * 患者姓名
+     */
+    @NotNull(message = "患者姓名不能为空")
+    @Size(min = 1, max = 255, message = "患者姓名校验失败，长度限制为1~255位")
     private String name;
 
-    // 出生日期
+    /**
+     * 患者出生日期（格式为yyyy-MM-dd）
+     */
     private Date birthday;
 
-    // 性别
+    /**
+     * 患者性别
+     */
+    @NotNull(message = "患者性别不能为空")
     private Gender gender;
 
-    // 监护人
+    /**
+     * 患者监护人
+     */
     private String guardian;
 
-    //-------------------------------------------------------------------------
-    // 以下为病人联系方式
-    //-------------------------------------------------------------------------
-
-    // 移动电话
+    /**
+     * 患者移动电话
+     */
+    @NotNull(message = "患者手机号不能为空")
+    @Size(min = 1, max = 16, message = "患者手机好校验失败，长度限制为1~16位")
     private String mobilephone;
 
-    // 固定电话
+    /**
+     * 患者固定电话
+     */
     private String telephone;
 
-    // 电子邮件
+    /**
+     * 患者电子邮件
+     */
     private String email;
 
-    // QQ
+    /**
+     * 患者 QQ 号
+     */
     private String qq;
 
-    // 微信
+    /**
+     * 患者微信
+     */
     private String wechat;
 
-    // 家庭地址
+    /**
+     * 患者家庭地址
+     */
     private String residencePlace;
 
-
-    //-------------------------------------------------------------------------
-    // 以下为病人健康状况字段
-    //-------------------------------------------------------------------------
-    // 过敏药物
+    /**
+     * 患者过敏药物
+     */
     private Set<String> allergicDrugs;
 
-    // 过敏食物
+    /**
+     * 患者过敏食物
+     */
     private Set<String> allergenicFoods;
 
-    // 其它过敏源
+    /**
+     * 患者其它过敏源
+     */
     private Set<String> otherAllergens;
 
-    // 是否有心脏病
-    private Boolean hasHeartDisease;
+    /**
+     * 患者是否患有心脏病
+     */
+    private boolean hasHeartDisease;
 
-    // 心脏病备注信息
+    /**
+     * 患者心脏病备注信息
+     */
     private String heartDiseaseRemark;
 
-    // 血压状况
+    /**
+     * 患者血压状况
+     */
     private BloodPressureStatus bloodPressureStatus;
 
-    // 当前血压值
+    /**
+     * 患者当前血压值
+     */
     private int currentBloodPressure;
 
-    // 血糖状况
+    /**
+     * 患者血糖状况
+     */
     private BloodGlucoseStatus bloodGlucoseStatus;
 
-    // 当前血糖值
+    /**
+     * 患者当前血糖值
+     */
     private int currentBloodGlucose;
 
-    // 是否有其它疾病
-    private Boolean hasOtherDisease;
+    /**
+     * 患者是否有其它疾病
+     */
+    private boolean hasOtherDisease;
 
-    // 其它疾病备注信息
+    /**
+     * 患者其它疾病备注信息
+     */
     private String otherDiseaseRemark;
 
-    // 是否有吸烟史
-    private Boolean hasSmokingHistory;
+    /**
+     * 患者是否有吸烟史
+     */
+    private boolean hasSmokingHistory;
 
-    // 是否有饮酒史
-    private Boolean hasDrinkingHistory;
+    /**
+     * 患者是否有饮酒史
+     */
+    private boolean hasDrinkingHistory;
 
-    // 口腔麻醉反应
+    /**
+     * 患者口腔麻醉反应
+     */
     private AnaesthesiaAdverseReactions anaesthesiaAdverseReactions;
 
-    // 是否怀孕
-    private Boolean isPregnant;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    /**
+     * 患者是否怀孕
+     */
+    private boolean isPregnant;
 
     public String getName() {
         return name;
@@ -240,11 +277,11 @@ public class PatientBasicInfoDO extends BaseDO {
         this.otherAllergens = otherAllergens;
     }
 
-    public Boolean getHasHeartDisease() {
+    public boolean isHasHeartDisease() {
         return hasHeartDisease;
     }
 
-    public void setHasHeartDisease(Boolean hasHeartDisease) {
+    public void setHasHeartDisease(boolean hasHeartDisease) {
         this.hasHeartDisease = hasHeartDisease;
     }
 
@@ -288,11 +325,11 @@ public class PatientBasicInfoDO extends BaseDO {
         this.currentBloodGlucose = currentBloodGlucose;
     }
 
-    public Boolean getHasOtherDisease() {
+    public boolean isHasOtherDisease() {
         return hasOtherDisease;
     }
 
-    public void setHasOtherDisease(Boolean hasOtherDisease) {
+    public void setHasOtherDisease(boolean hasOtherDisease) {
         this.hasOtherDisease = hasOtherDisease;
     }
 
@@ -304,19 +341,19 @@ public class PatientBasicInfoDO extends BaseDO {
         this.otherDiseaseRemark = otherDiseaseRemark;
     }
 
-    public Boolean getHasSmokingHistory() {
+    public boolean isHasSmokingHistory() {
         return hasSmokingHistory;
     }
 
-    public void setHasSmokingHistory(Boolean hasSmokingHistory) {
+    public void setHasSmokingHistory(boolean hasSmokingHistory) {
         this.hasSmokingHistory = hasSmokingHistory;
     }
 
-    public Boolean getHasDrinkingHistory() {
+    public boolean isHasDrinkingHistory() {
         return hasDrinkingHistory;
     }
 
-    public void setHasDrinkingHistory(Boolean hasDrinkingHistory) {
+    public void setHasDrinkingHistory(boolean hasDrinkingHistory) {
         this.hasDrinkingHistory = hasDrinkingHistory;
     }
 
@@ -328,43 +365,15 @@ public class PatientBasicInfoDO extends BaseDO {
         this.anaesthesiaAdverseReactions = anaesthesiaAdverseReactions;
     }
 
-    public Boolean getIsPregnant() {
+    public boolean isPregnant() {
         return isPregnant;
     }
 
-    public void setIsPregnant(Boolean isPregnant) {
-        this.isPregnant = isPregnant;
+    public void setPregnant(boolean pregnant) {
+        isPregnant = pregnant;
     }
 
-    @Override
     public String toString() {
-        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
-                .append("id", id)
-                .append("name", name)
-                .append("birthday", birthday)
-                .append("gender", gender)
-                .append("guardian", guardian)
-                .append("mobilephone", mobilephone)
-                .append("telephone", telephone)
-                .append("email", email)
-                .append("qq", qq)
-                .append("wechat", wechat)
-                .append("residencePlace", residencePlace)
-                .append("allergicDrugs", allergicDrugs)
-                .append("allergenicFoods", allergenicFoods)
-                .append("otherAllergens", otherAllergens)
-                .append("hasHeartDisease", hasHeartDisease)
-                .append("heartDiseaseRemark", heartDiseaseRemark)
-                .append("bloodPressureStatus", bloodPressureStatus)
-                .append("currentBloodPressure", currentBloodPressure)
-                .append("bloodGlucoseStatus", bloodGlucoseStatus)
-                .append("currentBloodGlucose", currentBloodGlucose)
-                .append("hasOtherDisease", hasOtherDisease)
-                .append("otherDiseaseRemark", otherDiseaseRemark)
-                .append("hasSmokingHistory", hasSmokingHistory)
-                .append("hasDrinkingHistory", hasDrinkingHistory)
-                .append("anaesthesiaAdverseReactions", anaesthesiaAdverseReactions)
-                .append("isPregnant", isPregnant)
-                .toString();
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }

@@ -22,16 +22,21 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.core.service;
+package org.medicinefreedom.member.service.facade;
 
-import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
+import org.medicinefreedom.member.service.base.common.OperationEnvironment;
+import org.medicinefreedom.member.service.request.PatientBasicInfoRequest;
+import org.medicinefreedom.member.service.response.CreatePatientInfoResponse;
+
+import javax.jws.WebService;
 
 /**
- * 通用说明：患者基本信息服务接口.
+ * 通用说明：患者信息服务门面.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/10 10:09
+ * @version 1.0.0  2017/1/11 9:44
  */
-public interface PatientBasicInfoService {
-    String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO);
+@WebService
+public interface PatientInfoFacade {
+    CreatePatientInfoResponse createPatientBasicInfo(PatientBasicInfoRequest request, OperationEnvironment environment);
 }
