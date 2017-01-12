@@ -56,7 +56,6 @@
         </layout>
     </appender>
 
-
     <!-- logger -->
     <logger name="org.medicinefreedom.member.core.data" additivity="false">
         <level value="DEBUG"/>
