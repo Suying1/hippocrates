@@ -4,14 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 序列生成器 -->
-    <bean id="sequenceGenerator" class="org.medicinefreedom.member.service.common.sequence.DefaultSequenceGenerator">
+    <bean id="sequenceGenerator" class="org.medicinefreedom.member.common.sequence.DefaultSequenceGenerator">
         <property name="sequenceDAO" ref="sequenceDAO" />
         <property name="transactionTemplate" ref="sequenceTransactionTemplate" />
         <property name="threadPoolTaskExecutor" ref="threadPoolTaskExecutor" />
     </bean>
 
     <!-- 序列DAO -->
-    <bean id="sequenceDAO" class="org.medicinefreedom.member.service.common.sequence.dao.SequenceDAOImpl">
+    <bean id="sequenceDAO" class="org.medicinefreedom.member.common.sequence.dao.SequenceDAOImpl">
         <property name="dataSource" ref="sequenceDataSource" />
     </bean>
 

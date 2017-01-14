@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.constant;
+package org.medicinefreedom.member.common.constant;
 
 /**
  * 通用说明：常量类.

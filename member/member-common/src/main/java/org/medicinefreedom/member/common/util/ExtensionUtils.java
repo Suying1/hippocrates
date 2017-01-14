@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.util;
+package org.medicinefreedom.member.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;

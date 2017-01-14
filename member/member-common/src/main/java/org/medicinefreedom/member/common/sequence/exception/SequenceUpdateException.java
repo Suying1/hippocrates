@@ -22,22 +22,16 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.sequence.dao;
-
-import org.medicinefreedom.member.service.common.sequence.domain.Sequence;
-
-import java.util.List;
+package org.medicinefreedom.member.common.sequence.exception;
 
 /**
- * 通用说明：Sequence 数据访问接口.
+ * 通用说明：序列更新失败异常.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/9 14:11
+ * @version 1.0.0  2017/1/9 16:11
  */
-public interface SequenceDAO {
-    List<Sequence> listAll();
-
-    Sequence lock(String sequenceName);
-
-    void update(String sequenceName, long oldCurrentValue, long newCurrentValue);
+public class SequenceUpdateException extends RuntimeException {
+    public SequenceUpdateException(Exception e) {
+        super(e);
+    }
 }

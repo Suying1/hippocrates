@@ -7,7 +7,7 @@
           class="org.medicinefreedom.member.service.validator.impl.PatientBasicInfoRequestValidator"/>
 
     <!-- facade implements -->
-    <bean id="patientInfoFacade" class="org.medicinefreedom.member.service.DefaultPatientInfoFacade"/>
+    <bean id="patientInfoFacade" class="org.medicinefreedom.member.service.impl.DefaultPatientInfoFacade"/>
 
     <!-- cxf -->
     <import resource="classpath:META-INF/cxf/cxf.xml"/>

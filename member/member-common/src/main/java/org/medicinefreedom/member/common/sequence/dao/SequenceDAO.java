@@ -22,68 +22,22 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.sequence.domain;
+package org.medicinefreedom.member.common.sequence.dao;
+
+import org.medicinefreedom.member.common.sequence.domain.Sequence;
+
+import java.util.List;
 
 /**
- * 通用说明：序列实体类.
+ * 通用说明：Sequence 数据访问接口.
  *
  * @author <a href="mailto:shucunbin@163.com">shucunbin</a>
- * @version 1.0.0  2017/1/9 13:47
+ * @version 1.0.0  2017/1/9 14:11
  */
-public class Sequence {
-    // 名称（标识）
-    private String name;
+public interface SequenceDAO {
+    List<Sequence> listAll();
 
-    // 当前值
-    private long currentValue;
+    Sequence lock(String sequenceName);
 
-    // 增量
-    private int increment;
-
-    // 最大容量（每次读取数据库获取的序列值空间大小）
-    private int capacity;
-
-    // 阈值
-    private int threshold;
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getCurrentValue() {
-        return currentValue;
-    }
-
-    public void setCurrentValue(long currentValue) {
-        this.currentValue = currentValue;
-    }
-
-    public int getIncrement() {
-        return increment;
-    }
-
-    public void setIncrement(int increment) {
-        this.increment = increment;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public int getThreshold() {
-        return threshold;
-    }
-
-    public void setThreshold(int threshold) {
-        this.threshold = threshold;
-    }
+    void update(String sequenceName, long oldCurrentValue, long newCurrentValue);
 }

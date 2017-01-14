@@ -26,8 +26,8 @@ package org.medicinefreedom.member.core.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
-import org.medicinefreedom.member.service.common.constant.MemberConstant;
-import org.medicinefreedom.member.service.common.sequence.SequenceGenerator;
+import org.medicinefreedom.member.common.constant.MemberConstant;
+import org.medicinefreedom.member.common.sequence.SequenceGenerator;
 import org.medicinefreedom.member.core.data.dataobject.PatientBasicInfoDO;
 import org.medicinefreedom.member.core.data.mapper.PatientBasicInfoMapper;
 import org.medicinefreedom.member.core.vo.PatientBasicInfoVO;
@@ -62,7 +62,7 @@ public class PatientBasicInfoServiceImpl implements PatientBasicInfoService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public String savePatientBasicInfo(PatientBasicInfoVO patientBasicInfoVO) {
-        logger.info("[APP->MEMBER]保存患者基本信息开始，请求参数：{}", patientBasicInfoVO);
+        logger.info("[facade->service]保存患者基本信息开始，请求参数：{}", patientBasicInfoVO);
         if (patientBasicInfoVO == null) {
             return StringUtils.EMPTY;
         }
@@ -71,7 +71,7 @@ public class PatientBasicInfoServiceImpl implements PatientBasicInfoService {
         patientBasicInfoVO.setPatientId(patientId);
         PatientBasicInfoDO patientBasicInfoDO = mapper.map(patientBasicInfoVO, PatientBasicInfoDO.class);
         patientBasicInfoMapper.insertPatientBasicInfo(patientBasicInfoDO);
-        logger.info("[MEMBER->APP]保存患者基本信息结束，已保存的患者标识为：{}",patientId);
+        logger.info("[service->facade]保存患者基本信息结束，已保存的患者标识为：{}",patientId);
         return patientId;
     }
 }

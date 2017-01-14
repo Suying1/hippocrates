@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service;
+package org.medicinefreedom.member.service.impl;
 
 import org.apache.commons.lang3.time.StopWatch;
 import org.dozer.Mapper;

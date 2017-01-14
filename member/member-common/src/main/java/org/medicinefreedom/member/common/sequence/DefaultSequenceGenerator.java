@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.sequence;
+package org.medicinefreedom.member.common.sequence;
 
 import org.apache.commons.collections4.MapUtils;
-import org.medicinefreedom.member.service.common.sequence.dao.SequenceDAO;
-import org.medicinefreedom.member.service.common.sequence.domain.Sequence;
-import org.medicinefreedom.member.service.common.sequence.exception.SequenceUpdateException;
+import org.medicinefreedom.member.common.sequence.domain.Sequence;
+import org.medicinefreedom.member.common.sequence.exception.SequenceUpdateException;
+import org.medicinefreedom.member.common.sequence.dao.SequenceDAO;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.task.TaskRejectedException;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;

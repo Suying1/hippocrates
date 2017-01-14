@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package org.medicinefreedom.member.service.common.sequence.dao;
+package org.medicinefreedom.member.common.sequence.dao;
 
-import org.medicinefreedom.member.service.common.sequence.domain.Sequence;
+import org.medicinefreedom.member.common.sequence.domain.Sequence;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
